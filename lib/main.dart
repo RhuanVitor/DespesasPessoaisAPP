@@ -1,6 +1,7 @@
 import 'package:despesas/components/chart.dart';
 import 'package:despesas/components/transaction_form.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import '../models/transaction.dart';
 import './components/transaction_list.dart';
 import 'dart:math';
@@ -28,11 +29,14 @@ class HomePage extends StatefulWidget{
 }
 
 class _HomePageState extends State<HomePage> {
-    final List<Transaction> _transactions = [
+
+  final List<Transaction> _transactions = [
 
 
 
   ];
+
+  bool _showChart = false;
 
   List<Transaction> get _recentTransactions{
     return _transactions.where((tr){
@@ -75,13 +79,17 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build (BuildContext context){
-    return Scaffold(
-      appBar: AppBar(
+
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp
+    ]);
+
+    final appBar = AppBar(
         title: Text(
           "Despesas pessoais", 
           style: TextStyle(
             color: Colors.white, 
-            fontSize: 20,
+            fontSize: 20 * MediaQuery.of(context).textScaler.scale(1),
             fontWeight: FontWeight.bold,
             ),
           ),
@@ -92,12 +100,38 @@ class _HomePageState extends State<HomePage> {
           )
         ], 
         backgroundColor: Theme.of(context).primaryColor,
-        ),
+        );
+
+    final availableHeight = MediaQuery.of(context).size.height - appBar.preferredSize.height - MediaQuery.of(context).padding.top;
+
+    return Scaffold(
+      appBar: appBar,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Chart(_recentTransactions),
-          TransactionList(transactions: _transactions, onRemove: _deleteTransaction,),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('Exibir gráfico'),
+              Switch(
+                value: _showChart,
+                onChanged: (value){
+                  setState(() {
+                    _showChart = value;
+                  });
+                },
+              ),
+            ],
+          ),
+          _showChart == true ?
+          Container(
+            height: availableHeight * 0.3,
+            child: Chart(_recentTransactions)
+          ) :
+          Container(
+            height: availableHeight  * 0.7,
+            child: TransactionList(transactions: _transactions, onRemove: _deleteTransaction,)
+          ),
         ],
       ),
       floatingActionButton: FloatingActionButton(onPressed: () => {_openTransactionFormModal(context)}, child: Icon(Icons.add),),

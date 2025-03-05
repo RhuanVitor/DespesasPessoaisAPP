@@ -12,7 +12,6 @@ class TransactionList extends StatelessWidget{
   @override
   Widget build(BuildContext context){
     return Container(
-      height: 480,
       child: transactions.isEmpty ? Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -26,7 +25,10 @@ class TransactionList extends StatelessWidget{
             ),
           )
         ],
-      ) : ListView.builder(
+      ) 
+      : 
+      ListView.builder(
+        padding: EdgeInsets.only(bottom: MediaQuery.of(context).size.height * 0.1),
         itemCount: transactions.length,
         itemBuilder: (ctx, index){
         final tr = transactions[index];
