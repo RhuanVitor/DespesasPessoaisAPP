@@ -151,7 +151,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "c:/Users/Rhuan/Documents/PROJETOS 2025/flutter/firstapp1/android/app/.cxx/RelWithDebInfo/4y146n2s/arm64-v8a"
+			"value" : "c:/Users/Rhuan/Documents/PROJETOS 2025/flutter/despesas/android/app/.cxx/RelWithDebInfo/4y146n2s/arm64-v8a"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -751,7 +751,7 @@
 				}
 			],
 			"type" : "UNINITIALIZED",
-			"value" : "C:\\Users\\Rhuan\\Documents\\PROJETOS 2025\\flutter\\firstapp1\\build\\app\\intermediates\\cxx\\RelWithDebInfo\\4y146n2s\\obj\\arm64-v8a"
+			"value" : "C:\\Users\\Rhuan\\Documents\\PROJETOS 2025\\flutter\\despesas\\build\\app\\intermediates\\cxx\\RelWithDebInfo\\4y146n2s\\obj\\arm64-v8a"
 		},
 		{
 			"name" : "CMAKE_LINKER",
@@ -1023,7 +1023,7 @@
 				}
 			],
 			"type" : "UNINITIALIZED",
-			"value" : "C:\\Users\\Rhuan\\Documents\\PROJETOS 2025\\flutter\\firstapp1\\build\\app\\intermediates\\cxx\\RelWithDebInfo\\4y146n2s\\obj\\arm64-v8a"
+			"value" : "C:\\Users\\Rhuan\\Documents\\PROJETOS 2025\\flutter\\despesas\\build\\app\\intermediates\\cxx\\RelWithDebInfo\\4y146n2s\\obj\\arm64-v8a"
 		},
 		{
 			"name" : "CMAKE_SHARED_LINKER_FLAGS",
@@ -1331,7 +1331,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/Rhuan/Documents/PROJETOS 2025/flutter/firstapp1/android/app/.cxx/RelWithDebInfo/4y146n2s/arm64-v8a"
+			"value" : "C:/Users/Rhuan/Documents/PROJETOS 2025/flutter/despesas/android/app/.cxx/RelWithDebInfo/4y146n2s/arm64-v8a"
 		},
 		{
 			"name" : "Project_IS_TOP_LEVEL",

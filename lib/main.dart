@@ -1,5 +1,5 @@
-import 'package:firstapp1/components/chart.dart';
-import 'package:firstapp1/components/transaction_form.dart';
+import 'package:despesas/components/chart.dart';
+import 'package:despesas/components/transaction_form.dart';
 import 'package:flutter/material.dart';
 import '../models/transaction.dart';
 import './components/transaction_list.dart';
