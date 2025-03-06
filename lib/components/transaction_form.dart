@@ -17,7 +17,7 @@ class _TransactionFormState extends State<TransactionForm> {
 
   _submitForm(){
     final title = titleController.text;
-    final value = double.tryParse(valueController.text) ?? 0.0;
+    final value = double.tryParse(valueController.text.replaceAll(',', '.')) ?? 0.0;
     if (title.isEmpty || value <= 0){
       return;
     }
@@ -43,62 +43,72 @@ class _TransactionFormState extends State<TransactionForm> {
 
   @override
   Widget build (BuildContext context){
-    return Card(
-      child: Padding(
-        padding: EdgeInsets.all(10),
-        child: 
-          Column(
-            children: [
-              TextField(
-                controller: titleController,
-                onSubmitted: (value) => _submitForm(),
-                decoration: InputDecoration(
-                  label: Text("Título")
-                ),
+    return Container(
+      padding: EdgeInsets.only(top: 20),
+      child: SingleChildScrollView(
+        child: Card(
+          child: Padding(
+            padding: EdgeInsets.only(
+              top: 10,
+              right: 10,
+              left: 10,
+              bottom: 10 + MediaQuery.of(context).viewInsets.bottom
               ),
-              TextField(
-                keyboardType: TextInputType.numberWithOptions(decimal: true),
-                controller: valueController,
-                onSubmitted: (value) => _submitForm(),
-                decoration: InputDecoration(
-                  label: Text("Valor (R\$)")
-                ),
-              ),
-              Container(
-                height: 70,
-                child: Row(
-                  children: [
-                    Text(
-                      DateFormat('dd/MM/y').format(_selectedDate)
+            child: 
+              Column(
+                children: [
+                  TextField(
+                    controller: titleController,
+                    onSubmitted: (value) => _submitForm(),
+                    decoration: InputDecoration(
+                      label: Text("Título")
                     ),
-                    TextButton(
-                      onPressed: _showDatePicker, 
-                      child: Text(
-                        "Selecionar data",
-                        style: TextStyle(
-                          color: Theme.of(context).primaryColor,
-                          fontWeight: FontWeight.bold
+                  ),
+                  TextField(
+                    keyboardType: TextInputType.numberWithOptions(decimal: true),
+                    controller: valueController,
+                    onSubmitted: (value) => _submitForm(),
+                    decoration: InputDecoration(
+                      label: Text("Valor (R\$)")
+                    ),
+                  ),
+                  Container(
+                    height: 70,
+                    child: Row(
+                      children: [
+                        Text(
+                          DateFormat('dd/MM/y').format(_selectedDate)
+                        ),
+                        TextButton(
+                          onPressed: _showDatePicker, 
+                          child: Text(
+                            "Selecionar data",
+                            style: TextStyle(
+                              color: Theme.of(context).primaryColor,
+                              fontWeight: FontWeight.bold
+                            ),
+                          )
+                        )
+                      ],
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ElevatedButton(
+                        onPressed: _submitForm, 
+                        child: Text("Nova transação"),
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all<Color>(Colors.deepPurple),
+                          foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
                         ),
                       )
-                    )
-                  ],
-                ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ElevatedButton(
-                    onPressed: _submitForm, 
-                    child: Text("Nova transação"),
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(Colors.deepPurple),
-                      foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
-                    ),
+                    ],
                   )
                 ],
-              )
-            ],
+              ),
           ),
+        ),
       ),
     );
   }
