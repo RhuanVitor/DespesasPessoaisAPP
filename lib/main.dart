@@ -80,9 +80,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build (BuildContext context){
 
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.portraitUp
-    ]);
+    bool isLandscape = MediaQuery.of(context).orientation == Orientation.landscape;
 
     final appBar = AppBar(
         title: Text(
@@ -94,6 +92,16 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
         actions: [
+          if (isLandscape)
+          IconButton(
+            onPressed: () => {
+              setState(() {
+                _showChart = !_showChart;
+              })
+            }, 
+            icon: !_showChart ? Icon(Icons.bar_chart_rounded, color: Colors.white,) : Icon(Icons.list, color: Colors.white,),
+          ),
+
           IconButton(
           onPressed: () => {_openTransactionFormModal(context)}, 
           icon: Icon(Icons.add, color: Colors.white,),
@@ -109,27 +117,14 @@ class _HomePageState extends State<HomePage> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text('Exibir gráfico'),
-              Switch(
-                value: _showChart,
-                onChanged: (value){
-                  setState(() {
-                    _showChart = value;
-                  });
-                },
-              ),
-            ],
-          ),
-          _showChart == true ?
+          if(_showChart == true || !isLandscape)
           Container(
-            height: availableHeight * 0.3,
+            height: isLandscape? availableHeight * 0.75 : availableHeight * 0.3,
             child: Chart(_recentTransactions)
-          ) :
+          ),
+          if (_showChart == false || !isLandscape)
           Container(
-            height: availableHeight  * 0.7,
+            height: isLandscape? availableHeight * 1 : availableHeight * 0.7,
             child: TransactionList(transactions: _transactions, onRemove: _deleteTransaction,)
           ),
         ],

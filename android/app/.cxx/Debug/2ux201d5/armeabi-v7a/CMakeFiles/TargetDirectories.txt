@@ -1,2 +1,0 @@
-C:/Users/FM/Documents/flutter/DespesasPessoaisAPP/android/app/.cxx/Debug/2ux201d5/armeabi-v7a/CMakeFiles/edit_cache.dir
-C:/Users/FM/Documents/flutter/DespesasPessoaisAPP/android/app/.cxx/Debug/2ux201d5/armeabi-v7a/CMakeFiles/rebuild_cache.dir

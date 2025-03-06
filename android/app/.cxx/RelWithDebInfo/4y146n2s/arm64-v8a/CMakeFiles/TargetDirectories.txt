@@ -1,2 +1,0 @@
-C:/Users/Rhuan/Documents/PROJETOS 2025/flutter/despesas/android/app/.cxx/RelWithDebInfo/4y146n2s/arm64-v8a/CMakeFiles/edit_cache.dir
-C:/Users/Rhuan/Documents/PROJETOS 2025/flutter/despesas/android/app/.cxx/RelWithDebInfo/4y146n2s/arm64-v8a/CMakeFiles/rebuild_cache.dir
